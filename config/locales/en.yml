@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    links:
+      new: 'New'
+      destroy: 'Destroy'
+      confirm: 'Confirm'
+      show: 'Show'
