@@ -1,5 +1,20 @@
+# == Schema Information
+#
+# Table name: goals
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  description   :text
+#  repeats       :boolean
+#  interval      :integer
+#  interval_unit :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  group_id      :integer
+#
+
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :complete]
 
   # GET /goals
   # GET /goals.json
@@ -57,6 +72,14 @@ class GoalsController < ApplicationController
     @goal.destroy
     respond_to do |format|
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def complete
+    @goal.complete(current_user)
+    respond_to do |format|
+      format.html { redirect_to group_url(@goal.group), notice: 'Goal was successfully completed.' }
       format.json { head :no_content }
     end
   end

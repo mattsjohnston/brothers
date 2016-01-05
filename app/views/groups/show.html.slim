@@ -1,0 +1,13 @@
+- model_class = Group
+
+.page-header
+  h1= @group.name
+
+ul.goals
+  - @user_goals.each do |user_goal|
+    li
+      h4= user_goal.name
+      - if user_goal.complete?
+        p Completed
+      - else
+        p= link_to 'Complete', complete_goal_path(user_goal.goal), method: :post

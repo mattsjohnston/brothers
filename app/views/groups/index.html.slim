@@ -4,20 +4,18 @@
 table.table.table-striped
   thead
     tr
-      th ID
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:created_at)
       th= t '.actions', :default => t("helpers.actions")
   tbody
     - @groups.each do |group|
       tr
-        td= group.id
-        td= group.name
+        td= link_to group.name, group_path(group)
         td= l group.created_at, format: :long
         td
-          = link_to group_path(group), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
-            = glyph 'info-sign'
-            = glyph 'pencil'
-          = link_to group_path(group), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do
-            = glyph 'remove'
+          - if group.has_member?(current_user)
+            = link_to 'Leave', leave_group_path(group), method: :post, class: 'btn btn-xs', title: 'Leave Group'
+          - else
+            = link_to 'Join', join_group_path(group), method: :post, class: 'btn btn-xs', title: "Join Group"
+
 = link_to t('.new', default: t("helpers.links.new")), new_group_path, class: 'btn btn-primary'

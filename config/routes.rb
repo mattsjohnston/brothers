@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   get 'landings/index'
 
-  resources :groups
+  resources :groups do
+    member do
+      post :join
+      post :leave
+    end
+  end
 
-  resources :programs
-
-  resources :goals
+  resources :goals do
+    member do
+      post :complete
+    end
+  end
 
   resources :goal_completions
 

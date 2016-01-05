@@ -1,5 +1,15 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :join, :leave]
 
   # GET /groups
   # GET /groups.json
@@ -10,6 +20,8 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    group_goals = GroupGoalsService.new @group, Date.today()
+    @user_goals = group_goals.user_goals(current_user)
   end
 
   # GET /groups/new
@@ -57,6 +69,22 @@ class GroupsController < ApplicationController
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def join
+    @group.add_user(current_user)
+    respond_to do |format|
+      format.html { redirect_to groups_url, notice: "You've joined the group." }
+      format.json { head :no_content }
+    end
+  end
+
+  def leave
+    @group.remove_user(current_user)
+    respond_to do |format|
+      format.html { redirect_to groups_url, notice: "You've been removed from the group." }
       format.json { head :no_content }
     end
   end
