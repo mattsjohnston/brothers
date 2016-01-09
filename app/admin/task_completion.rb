@@ -1,4 +1,4 @@
-ActiveAdmin.register GoalCompletion do
+ActiveAdmin.register TaskCompletion do
   permit_params 
 
 # See permitted parameters documentation:

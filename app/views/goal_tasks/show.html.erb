@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @goal_task.goal %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @goal_task.group %>
+</p>
+
+<%= link_to 'Edit', edit_goal_task_path(@goal_task) %> |
+<%= link_to 'Back', goal_tasks_path %>

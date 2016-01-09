@@ -1,23 +1,21 @@
 # == Schema Information
 #
-# Table name: goal_completions
+# Table name: goal_tasks
 #
 #  id         :integer          not null, primary key
 #  goal_id    :integer
-#  user_id    :integer
+#  group_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  group_id   :integer
+#  due_date   :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   goal_id: 
-  user_id: 
-  program_id: 
+  group_id: 
 
 two:
   goal_id: 
-  user_id: 
-  program_id: 
+  group_id: 

@@ -1,13 +1,21 @@
 - model_class = Group
 
 .page-header
-  h1= @group.name
+  h1
+    = link_to @group.name, group_path(@group)
 
-ul.goals
-  - @user_goals.each do |user_goal|
-    li
-      h4= user_goal.name
-      - if user_goal.complete?
-        p Completed
-      - else
-        p= link_to 'Complete', complete_goal_path(user_goal.goal), method: :post
+.task-date-selector
+  = link_to group_path(@group, display_date: @display_date - 1.day), class: 'date-navigation' do
+    span.glyphicon.glyphicon-menu-left
+  = link_to group_path(@group, display_date: @display_date + 1.day), class: 'date-navigation date-navigation-right' do
+    span.glyphicon.glyphicon-menu-right
+  .task-date-display= @display_date.to_s :long_ordinal
+
+ul.tasks
+  = render @tasks, user: current_user
+
+- @other_members.each do |user|
+  .member-tasks
+    p= user.name
+    ul.tasks
+      = render @tasks, user: user

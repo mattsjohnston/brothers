@@ -6,6 +6,9 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  state      :string(255)
+#  started_at :datetime
+#  ends_at    :datetime
 #
 
 class GroupsController < ApplicationController
@@ -20,8 +23,9 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    group_goals = GroupGoalsService.new @group, Date.today()
-    @user_goals = group_goals.user_goals(current_user)
+    @display_date = params.has_key?(:display_date) ? Date.parse(params[:display_date]) : Date.today
+    @tasks = @group.goal_tasks.on @display_date
+    @other_members = @group.users.where.not(id: current_user.id)
   end
 
   # GET /groups/new
@@ -69,6 +73,14 @@ class GroupsController < ApplicationController
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def start
+    @group.start!
+    respond_to do |format|
+      format.html { redirect_to group_url(group), notice: "Group plan has been started." }
       format.json { head :no_content }
     end
   end

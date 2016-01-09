@@ -1,32 +1,35 @@
 class GroupGoalsService
 
-  def initialize(group, date)
+  def initialize(group)
     @group = group
-    @date = date
-
-    @goals = get_goals_by_date(@date)
   end
 
-  def user_goals(user)
-    user_goals = @goals.map do |goal|
-      user_goal = UserGoal.new(goal, @user, @date)
+  def update_tasks
+    cleanup_tasks
+    create_tasks
+  end
+
+  def cleanup_tasks
+    @group.goal_tasks.where('due_date > ?', Time.now).delete_all
+  end
+
+  def create_tasks
+    @group.goals.each do |goal|
+      create_tasks_for_goal goal
     end
-    user_goals
   end
 
-  def get_goals_by_date(date)
-    allGoals = @group.goals
-  end
+  def create_tasks_for_goal(goal)
+    # Create a time duration (i.e. 1.week or 2.days)
+    interval = goal.interval.send(goal.interval_unit)
+    task_date = goal.group.starts_at
 
-  def update_goals
-  end
+    begin
+      goal.goal_tasks.create due_date: task_date
 
-  def user_completed_goals(user)
-    @user_completed_goals = get_user_completed_goals(user)
-  end
+      task_date += interval
+    end while task_date <= goal.group.ends_at
 
-  def get_user_completed_goals(user)
-    return @group.goal_completions.where(user: user)
   end
 
 end

@@ -30,6 +30,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.5.2)
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
       actionview (= 4.1.4)
@@ -247,6 +248,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activeadmin!
   annotate
   better_errors

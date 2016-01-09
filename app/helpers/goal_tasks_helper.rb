@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: goal_completions
+# Table name: goal_tasks
 #
 #  id         :integer          not null, primary key
 #  goal_id    :integer
-#  user_id    :integer
+#  group_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  group_id   :integer
+#  due_date   :datetime
 #
 
-module GoalCompletionsHelper
+module GoalTasksHelper
 end

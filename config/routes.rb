@@ -5,16 +5,18 @@ Rails.application.routes.draw do
     member do
       post :join
       post :leave
+      post :start
     end
   end
 
-  resources :goals do
+  resources :goal_tasks do
     member do
-      post :complete
+      post :toggle
     end
   end
 
-  resources :goal_completions
+  resources :task_completions
+  resources :goals
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords", omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105085129) do
+ActiveRecord::Schema.define(version: 20160108060320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,16 +65,16 @@ ActiveRecord::Schema.define(version: 20160105085129) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "goal_completions", force: true do |t|
+  create_table "goal_tasks", force: true do |t|
     t.integer  "goal_id"
-    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id"
+    t.datetime "due_date"
   end
 
-  add_index "goal_completions", ["goal_id"], name: "index_goal_completions_on_goal_id", using: :btree
-  add_index "goal_completions", ["user_id"], name: "index_goal_completions_on_user_id", using: :btree
+  add_index "goal_tasks", ["goal_id"], name: "index_goal_tasks_on_goal_id", using: :btree
+  add_index "goal_tasks", ["group_id"], name: "index_goal_tasks_on_group_id", using: :btree
 
   create_table "goals", force: true do |t|
     t.string   "name"
@@ -93,6 +93,9 @@ ActiveRecord::Schema.define(version: 20160105085129) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "aasm_state"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
   end
 
   create_table "groups_users", id: false, force: true do |t|
@@ -102,6 +105,17 @@ ActiveRecord::Schema.define(version: 20160105085129) do
 
   add_index "groups_users", ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id", using: :btree
   add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
+
+  create_table "task_completions", force: true do |t|
+    t.integer  "goal_task_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  add_index "task_completions", ["goal_task_id"], name: "index_task_completions_on_goal_task_id", using: :btree
+  add_index "task_completions", ["user_id"], name: "index_task_completions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
