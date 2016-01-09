@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: goal_completions
+# Table name: task_completions
 #
 #  id             :integer          not null, primary key
 #  goal_task_id   :integer
