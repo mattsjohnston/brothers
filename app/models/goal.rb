@@ -15,7 +15,7 @@
 
 class Goal < ActiveRecord::Base
   belongs_to :group
-  has_many :goal_completions
+  has_many :task_completions
   has_many :goal_tasks
 
   def complete(user)
