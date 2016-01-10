@@ -17,9 +17,19 @@ class GoalTask < ActiveRecord::Base
 
   delegate :name, to: :goal
   delegate :interval, to: :goal
+  delegate :points, to: :goal
 
   scope :on, lambda { |date|
-    where(due_date: date)
+    where('goal_tasks.due_date = ?', date)
+  }
+  scope :complete, lambda { |user|
+    joins(:task_completions).
+    group('goal_tasks.id').
+    where('task_completions.user_id = ?', user.id).
+    having('COUNT(task_completions.id) >= 1')
+  }
+  scope :incomplete, lambda { |user|
+    where("not exists (select null from task_completions where task_completions.goal_task_id = goal_tasks.id and task_completions.user_id = ?)", user.id)
   }
 
   def complete?(user)

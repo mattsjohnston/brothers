@@ -11,8 +11,13 @@
     span.glyphicon.glyphicon-menu-right
   .task-date-display= @display_date.to_s :long_ordinal
 
-ul.tasks
-  = render @tasks, user: current_user
+.member-tasks
+  .task-progress
+    .task-progress-fill
+
+  ul.tasks
+    = render @incomplete_tasks, user: current_user
+    = render @complete_tasks, user: current_user
 
 - @other_members.each do |user|
   .member-tasks

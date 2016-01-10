@@ -5,7 +5,7 @@
 
   > li
     +clearfix()
-    padding: 1rem 1.5rem
+    padding: 2rem 1.5rem
     background: #fff
     border: 1px solid #eee
     border-width: 1px 0
@@ -17,7 +17,7 @@
       background: #fff
       border: 1px solid #ccc
       border-radius: 4px
-      margin-right: 1.5rem
+      margin: 0 1.5rem 0 0
       float: left
 
       text-align: center
@@ -36,6 +36,13 @@
 
     > h4.title
       line-height: 30px
+      margin: 0
+
+    .points
+      float: right
+      color: #999
+      line-height: 30px
+      margin: 0
 
     &.task-complete
       .checkbox .check
@@ -68,3 +75,16 @@
     text-align: center
     padding: 10px 0
     line-height: 30px
+
+.member-tasks
+  background: #fff
+  margin: 3rem 0
+
+.task-progress
+  background: #f9f9f9
+  height: 10px
+  border-radius: 5px
+
+  .task-progress-fill
+    color: #dd6611
+

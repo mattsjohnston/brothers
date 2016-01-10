@@ -23,7 +23,7 @@ class Group < ActiveRecord::Base
     state :paused, :initial => true
     state :active
 
-    event :start, after: :create_group_tasks do
+    event :start, after: :start_group do
       transitions from: :paused, to: :active
     end
 
@@ -32,7 +32,7 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def create_group_tasks
+  def start_group
     group_goals_service = GroupGoalsService.new self
     group_goals_service.update_tasks
   end

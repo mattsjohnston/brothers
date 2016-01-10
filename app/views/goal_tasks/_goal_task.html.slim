@@ -5,4 +5,5 @@ li class=(goal_task.complete?(user) ? 'task-complete' : '')
   - else
     .checkbox.checkbox-other
       .check
+  p.points #{goal_task.points} points
   h4.title= goal_task.name

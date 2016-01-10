@@ -25,7 +25,7 @@ class GroupGoalsService
     task_date = goal.group.starts_at
 
     begin
-      goal.goal_tasks.create due_date: task_date
+      goal.goal_tasks.create due_date: task_date, group: goal.group
 
       task_date += interval
     end while task_date <= goal.group.ends_at
