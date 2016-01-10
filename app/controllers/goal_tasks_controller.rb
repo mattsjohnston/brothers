@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: goal_tasks
+#
+#  id         :integer          not null, primary key
+#  goal_id    :integer
+#  group_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  due_date   :datetime
+#
+
 class GoalTasksController < ApplicationController
   before_action :set_goal_task, only: [:show, :edit, :update, :destroy, :toggle]
 

@@ -6,13 +6,15 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  state      :string(255)
-#  started_at :datetime
+#  aasm_state :string(255)
+#  starts_at  :datetime
 #  ends_at    :datetime
 #
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy, :join, :leave]
+  before_filter :require_user_signed_in
+  # before_filter :authenticate_user!
 
   # GET /groups
   # GET /groups.json

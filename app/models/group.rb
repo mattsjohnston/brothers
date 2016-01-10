@@ -6,7 +6,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  state      :string(255)
+#  aasm_state :string(255)
 #  starts_at  :datetime
 #  ends_at    :datetime
 #
