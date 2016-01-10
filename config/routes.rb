@@ -36,9 +36,9 @@ Rails.application.routes.draw do
     get    "account" => "users/registrations#edit",   as: :edit_user_registration
   end
 
-  authenticated do
-    root :to => 'groups#index', as: :authenticated
-  end
+  # authenticated do
+  #   root :to => 'groups#index', as: :authenticated
+  # end
 
   root :to => 'groups#index'
 

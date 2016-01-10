@@ -13,8 +13,7 @@
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy, :join, :leave]
-  before_filter :require_user_signed_in
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   # GET /groups
   # GET /groups.json
