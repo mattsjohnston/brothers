@@ -25,9 +25,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @display_date = params.has_key?(:display_date) ? Date.parse(params[:display_date]) : Date.today
-    @tasks = @group.goal_tasks.on @display_date
-    @complete_tasks = @group.goal_tasks.complete(current_user).on @display_date
-    @incomplete_tasks = @group.goal_tasks.incomplete(current_user).on @display_date
+    @group_date_service = GroupDateService.new @group, @display_date
     @other_members = @group.users.where.not(id: current_user.id)
   end
 

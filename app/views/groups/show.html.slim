@@ -13,14 +13,17 @@
 
 .member-tasks
   .task-progress
-    .task-progress-fill
+    .task-progress-fill style="width: #{@group_date_service.complete_percent(current_user)}"
 
   ul.tasks
-    = render @incomplete_tasks, user: current_user
-    = render @complete_tasks, user: current_user
+    = render @group_date_service.incomplete_tasks(current_user), user: current_user
+    = render @group_date_service.complete_tasks(current_user), user: current_user
 
 - @other_members.each do |user|
   .member-tasks
+    .task-progress
+      .task-progress-fill style="width: #{@group_date_service.complete_percent(user)}"
     p= user.name
     ul.tasks
-      = render @tasks, user: user
+      = render @group_date_service.incomplete_tasks(user), user: user
+      = render @group_date_service.complete_tasks(user), user: user
