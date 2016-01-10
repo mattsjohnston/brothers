@@ -10,7 +10,15 @@ class GroupDateService
   end
 
   def tasks
-    @tasks ||= get_tasks
+    @tasks ||= @group.goal_tasks.on(@date)
+  end
+
+  def total_points
+    @total_points ||= Goal.where('id in (?)', tasks.map(&:goal_id)).sum(:points)
+  end
+
+  def complete_points(user)
+    Goal.where('id in (?)', complete_tasks(user).map(&:goal_id)).sum(:points)
   end
 
   def complete_tasks(user)
@@ -29,15 +37,16 @@ class GroupDateService
     complete_task_count(user).to_f / task_count
   end
 
-  def complete_percent(user)
+  def complete_percentage(user)
     "#{complete_ratio(user) * 100}%"
   end
 
+  def point_ratio(user)
+    complete_points(user).to_f / total_points
+  end
 
-  private
-
-    def get_tasks
-      @group.goal_tasks.on(@date)
-    end
+  def point_percentage(user)
+    "#{point_ratio(user) * 100}%"
+  end
 
 end

@@ -13,7 +13,7 @@
 
 .member-tasks
   .task-progress
-    .task-progress-fill style="width: #{@group_date_service.complete_percent(current_user)}"
+    .task-progress-fill style="width: #{@group_date_service.point_percentage(current_user)}"
 
   ul.tasks
     = render @group_date_service.incomplete_tasks(current_user), user: current_user
@@ -22,7 +22,7 @@
 - @other_members.each do |user|
   .member-tasks
     .task-progress
-      .task-progress-fill style="width: #{@group_date_service.complete_percent(user)}"
+      .task-progress-fill style="width: #{@group_date_service.point_percentage(user)}"
     p= user.name
     ul.tasks
       = render @group_date_service.incomplete_tasks(user), user: user
