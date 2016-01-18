@@ -1,5 +1,5 @@
 ActiveAdmin.register Group do
-  permit_params :name, :aasm_state, :starts_at, :ends_at
+  permit_params :name, :aasm_state, :starts_at, :total_days
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -22,6 +22,10 @@ ActiveAdmin.register Group do
     link_to 'Pause', pause_admin_group_path(group) if group.active?
   end
 
+  action_item only: :show do
+    link_to 'Reset', reset_admin_group_path(group) if group.active?
+  end
+
 
   member_action :start do
     group = Group.find(params[:id])
@@ -35,6 +39,14 @@ ActiveAdmin.register Group do
     group.pause!
     
     redirect_to action: :show, notice: 'Goal has been started.'
+  end
+
+  member_action :reset do
+    group = Group.find(params[:id])
+    ggs = GroupGoalsService.new group
+    ggs.reset_tasks
+    
+    redirect_to action: :show, notice: 'Goal tasks have been reset.'
   end
 
 end

@@ -13,7 +13,7 @@
 class GoalTask < ActiveRecord::Base
   belongs_to :goal
   belongs_to :group
-  has_many :task_completions
+  has_many :task_completions, dependent: :destroy
 
   delegate :name, to: :goal
   delegate :interval, to: :goal
@@ -34,6 +34,10 @@ class GoalTask < ActiveRecord::Base
 
   def complete?(user)
     user.task_completions.where(goal_task: self).count >= self.interval
+  end
+
+  def current_description
+    self.description ? self.description : self.goal.description
   end
 
 end

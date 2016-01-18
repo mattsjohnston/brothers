@@ -15,8 +15,7 @@
 
 class Goal < ActiveRecord::Base
   belongs_to :group
-  has_many :task_completions
-  has_many :goal_tasks
+  has_many :goal_tasks, dependent: :destroy
 
   def complete(user)
     GoalCompletion.create(

@@ -6,6 +6,7 @@ ActiveAdmin.register GoalTask do
     column :id
     column :name
     column :due_date
+    column :description
     actions
   end
 

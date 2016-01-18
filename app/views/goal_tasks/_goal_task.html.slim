@@ -7,3 +7,4 @@ li class=(goal_task.complete?(user) ? 'task-complete' : '')
       .check
   p.points #{goal_task.points} points
   h4.title= goal_task.name
+  p.description= goal_task.current_description

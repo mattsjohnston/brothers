@@ -1,5 +1,5 @@
 ActiveAdmin.register Goal do
-  permit_params :name, :description, :repeats, :interval, :interval_unit, :points
+  permit_params :name, :description, :repeats, :interval, :interval_unit, :points, :group_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
