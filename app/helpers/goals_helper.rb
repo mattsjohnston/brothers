@@ -11,6 +11,7 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  group_id      :integer
+#  points        :integer
 #
 
 module GoalsHelper

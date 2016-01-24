@@ -51,6 +51,7 @@ gem 'omniauth-facebook'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 gem 'hirb'
+gem 'redcarpet'
 gem 'wirble'
 gem 'awesome_print'
 

@@ -19,6 +19,8 @@
 #  uid                    :string(255)
 #  name                   :string(255)
 #  group_id               :integer
+#  role                   :string(255)
+#  image                  :string(255)
 #
 
 class User < ActiveRecord::Base

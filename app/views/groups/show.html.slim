@@ -1,8 +1,8 @@
 - model_class = Group
 
 .page-header
-  h1
-    = link_to @group.name, group_path(@group)
+  h1= link_to @group.name, group_path(@group)
+  .group-description= markdown @group.description
 
 .task-date-selector
   = link_to group_path(@group, display_date: @display_date - 1.day), class: 'date-navigation' do
@@ -21,9 +21,11 @@
 
 - @other_members.each do |user|
   .member-tasks
+    header
+      = image_tag user.image, class: 'member-image'
+      h5= user.name
     .task-progress
       .task-progress-fill style="width: #{@group_date_service.point_percentage(user)}"
-    p= user.name
     ul.tasks
       = render @group_date_service.incomplete_tasks(user), user: user
       = render @group_date_service.complete_tasks(user), user: user

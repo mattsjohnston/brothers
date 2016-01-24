@@ -1,5 +1,5 @@
 ActiveAdmin.register GoalTask do
-  permit_params :due_date
+  permit_params :due_date, :description
 
   index do
     selectable_column

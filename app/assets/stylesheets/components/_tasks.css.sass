@@ -40,6 +40,7 @@
 
     > p.description
       color: #999
+      margin: 0
 
 
     .points
@@ -86,6 +87,21 @@
 .member-tasks
   background: #fff
   margin: 0 0 3rem
+  border: 1px solid #ddd
+
+  > header
+    padding: 1rem 1.5rem
+    +clearfix()
+
+    .member-image
+      float: left
+      width: 30px
+      height: 30px
+      margin: 0 1.5rem 0 0
+
+    > h5
+      line-height: 30px
+      margin: 0
 
 .task-progress
   background: #f9f9f9
