@@ -6,5 +6,9 @@ li class=(goal_task.complete?(user) ? 'task-complete' : '')
     .checkbox.checkbox-other
       .check
   p.points #{goal_task.points} points
-  h4.title= goal_task.name
-  p.description= goal_task.current_description
+  h4.title
+    = goal_task.name
+  p.description
+    - if goal_task.interval_unit != 'day'
+      span.label.label-info.interval #{goal_task.interval_unit}ly
+    = goal_task.current_description

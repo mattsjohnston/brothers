@@ -15,9 +15,7 @@
   .task-progress
     .task-progress-fill style="width: #{@group_date_service.point_percentage(current_user)}"
 
-  ul.tasks
-    = render @group_date_service.incomplete_tasks(current_user), user: current_user
-    = render @group_date_service.complete_tasks(current_user), user: current_user
+  = render 'shared/user_tasks', user: current_user, group_date_service: @group_date_service
 
 - @other_members.each do |user|
   .member-tasks
@@ -26,6 +24,4 @@
       h5= user.name
     .task-progress
       .task-progress-fill style="width: #{@group_date_service.point_percentage(user)}"
-    ul.tasks
-      = render @group_date_service.incomplete_tasks(user), user: user
-      = render @group_date_service.complete_tasks(user), user: user
+    = render 'shared/user_tasks', user: user, group_date_service: @group_date_service

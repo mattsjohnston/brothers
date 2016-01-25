@@ -21,6 +21,14 @@ class GroupDateService
     Goal.where('id in (?)', complete_tasks(user).map(&:goal_id)).sum(:points)
   end
 
+  def complete_weekly_tasks(user)
+    @group.goal_tasks.complete(user).within_week(@date)
+  end
+
+  def incomplete_weekly_tasks(user)
+    @group.goal_tasks.incomplete(user).within_week(@date)
+  end
+
   def complete_tasks(user)
     @group.goal_tasks.complete(user).on @date
   end

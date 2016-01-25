@@ -1,0 +1,6 @@
+ul.tasks
+  = render group_date_service.incomplete_tasks(user), user: user
+  = render group_date_service.complete_tasks(user), user: user
+ul.tasks.tasks-weekly
+  = render group_date_service.incomplete_weekly_tasks(user), user: user
+  = render group_date_service.complete_weekly_tasks(user), user: user
