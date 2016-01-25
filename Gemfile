@@ -54,6 +54,7 @@ gem 'hirb'
 gem 'redcarpet'
 gem 'wirble'
 gem 'awesome_print'
+gem "active_admin_import"
 
 group :development do
   gem 'better_errors'

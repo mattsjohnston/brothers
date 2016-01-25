@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     User.create(name:     auth.extra.raw_info.name,
                 provider: auth.provider,
                 uid:      auth.uid,
-                image:    "http://graph.facebook.com/#{auth.uid}/picture?type=square"
+                image:    "http://graph.facebook.com/#{auth.uid}/picture?type=square",
                 email:    auth.info.email,
                 password: Devise.friendly_token[0,20])
   end

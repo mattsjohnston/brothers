@@ -1,19 +1,6 @@
 ActiveAdmin.register Group do
   permit_params :name, :aasm_state, :starts_at, :total_days, :description
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
-
   action_item only: :show do
     link_to 'Start', start_admin_group_path(group) if group.paused?
   end
@@ -48,5 +35,8 @@ ActiveAdmin.register Group do
     
     redirect_to action: :show, notice: 'Goal tasks have been reset.'
   end
+
+  
+  active_admin_import
 
 end
