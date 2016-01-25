@@ -1,17 +1,18 @@
 - model_class = Group
 
-.panel.padding
-  h1= link_to @group.name, group_path(@group)
+.panel.padding.group
+  .panel-meta.pull-right Day #{@group_date_service.days_since_beginning}
+  h1.group-name= link_to @group.name, group_path(@group)
   .group-description= markdown @group.description
+  a.panel-expand href="#"
+    span.caret
 
 .panel.task-date-selector
   = link_to group_path(@group, display_date: @display_date - 1.day), class: 'date-navigation' do
     span.glyphicon.glyphicon-menu-left
   = link_to group_path(@group, display_date: @display_date + 1.day), class: 'date-navigation date-navigation-right' do
     span.glyphicon.glyphicon-menu-right
-  .task-date-display
-    = @display_date.to_s :long_ordinal
-    |  - Day #{@group_date_service.days_since_beginning}
+  .task-date-display= @display_date.to_s :long_ordinal
 
 .panel.member-tasks
   .task-progress

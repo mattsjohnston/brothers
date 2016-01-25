@@ -38,6 +38,9 @@ gem 'turbolinks'
 
 gem 'bundler'
 
+gem "active_admin_import"
+gem 'awesome_print'
+gem 'bourbon'
 gem 'delayed_job_active_record'
 gem 'simple_form'
 gem 'rails_config'
@@ -53,8 +56,6 @@ gem 'validates_formatting_of'
 gem 'hirb'
 gem 'redcarpet'
 gem 'wirble'
-gem 'awesome_print'
-gem "active_admin_import"
 
 group :development do
   gem 'better_errors'

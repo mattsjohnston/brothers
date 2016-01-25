@@ -274,6 +274,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (= 3.3.5)
   bootstrap-sass-extras
+  bourbon
   bundler
   cancancan
   coffee-rails (~> 4.0.0)
