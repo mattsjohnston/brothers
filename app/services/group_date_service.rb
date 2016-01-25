@@ -13,6 +13,10 @@ class GroupDateService
     @tasks ||= @group.goal_tasks.on(@date)
   end
 
+  def days_since_beginning
+    (@date - @group.starts_at.to_date).floor.days
+  end
+
   def total_points
     @total_points ||= Goal.where('id in (?)', tasks.map(&:goal_id)).sum(:points)
   end
