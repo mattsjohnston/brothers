@@ -1,6 +1,8 @@
 ActiveAdmin.register GoalTask do
   permit_params :due_date, :description
 
+  config.sort_order = "due_date_asc"
+
   index do
     selectable_column
     column :id

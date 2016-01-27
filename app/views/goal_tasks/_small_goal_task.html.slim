@@ -1,0 +1,7 @@
+li class=(goal_task.complete?(user) ? 'task-complete' : '')
+  p.points #{goal_task.points} points
+  .checkbox
+    .check
+  h4.title= goal_task.name
+  - if goal_task.interval_unit != 'day'
+    span.label.label-info.interval #{goal_task.interval_unit}ly

@@ -1,0 +1,6 @@
+ul.tasks.tasks-small
+  = render partial: 'goal_tasks/small_goal_task', collection: group_date_service.incomplete_tasks(user), as: :goal_task, locals: { user: user }
+  = render partial: 'goal_tasks/small_goal_task', collection: group_date_service.complete_tasks(user), as: :goal_task, locals: { user: user }
+/ ul.tasks.tasks-weekly
+/   = render group_date_service.incomplete_weekly_tasks(user), user: user
+/   = render group_date_service.complete_weekly_tasks(user), user: user

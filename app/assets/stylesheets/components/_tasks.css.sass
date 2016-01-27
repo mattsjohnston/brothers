@@ -18,20 +18,19 @@
       border-radius: 4px
       margin: 0 1.5rem 0 0
       float: left
-
       text-align: center
-
-      .check
-        +icon()
-        color: #666
-        display: none
-        line-height: 25px
-        &:before
-          content: "\e013"
 
       &.checkbox-other
         background: #f7f7f7
         border: none
+
+    .check
+      +icon()
+      color: #666
+      display: none
+      line-height: 25px
+      &:before
+        content: "\e013"
 
     > h4.title
       // line-height: 30px
@@ -51,8 +50,8 @@
       margin: 0
 
     &.task-complete
-      .checkbox .check
-        display: inline-block
+      .check
+        display: block
 
       > h4.title
         text-decoration: line-through
@@ -62,6 +61,30 @@
         color: #d5d5d5
 
     // &:last-child
+
+  &.tasks-small
+    padding: .5rem 0
+
+    > li
+      border: none
+      padding-top: .3rem
+      padding-bottom: .3rem
+
+      .points
+        line-height: 1.3em
+
+      .checkbox
+        border: none
+        background: transparent
+        width: auto
+        height: auto
+
+        .check
+          line-height: normal
+          font-size: 1rem
+
+      > h4.title
+        font-size: 1em
 
   &.tasks-weekly
     border-top: 1px solid #eee
