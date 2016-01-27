@@ -15,6 +15,9 @@
   .task-date-display= @display_date.to_s :long_ordinal
 
 .panel.member-tasks
+  header
+    = image_tag current_user.image, class: 'member-image'
+    h5= current_user.name
   .task-progress
     .task-progress-fill style="width: #{@group_date_service.point_percentage(current_user)}"
   = render 'shared/user_tasks', user: current_user, group_date_service: @group_date_service

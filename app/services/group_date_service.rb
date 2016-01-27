@@ -14,7 +14,7 @@ class GroupDateService
   end
 
   def days_since_beginning
-    (@date - @group.starts_at.to_date).to_i
+    (@date - @group.starts_at.to_date).to_i + 1
   end
 
   def total_points
