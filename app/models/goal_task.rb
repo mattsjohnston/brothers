@@ -46,7 +46,7 @@ class GoalTask < ActiveRecord::Base
   end
 
   def current_description
-    self.description ? self.description : self.goal.description
+    self.description.blank? ? self.description : self.goal.description
   end
 
 end
