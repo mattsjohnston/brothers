@@ -1,3 +1,6 @@
+$success-color: #11dd88
+$success-text: darken($success-color, 5%)
+
 .tasks
   list-style: none
   margin: 0
@@ -26,7 +29,8 @@
 
     .check
       +icon()
-      color: #666
+      // color: #666
+      color: $success-text
       display: none
       line-height: 25px
       &:before
@@ -60,6 +64,9 @@
       > p.description
         color: #d5d5d5
 
+      .points
+        color: $success-text
+
     // &:last-child
 
   &.tasks-small
@@ -75,13 +82,14 @@
 
       .checkbox
         border: none
-        background: transparent
-        width: auto
-        height: auto
+        background: #f6f6f6
+        width: 16px
+        height: 16px
 
         .check
           line-height: normal
           font-size: 1rem
+          line-height: 15px
 
       > h4.title
         font-size: 1em
@@ -141,6 +149,6 @@
   border-radius: 5px
 
   .task-progress-fill
-    background: #11dd88
+    background: $success-color
     height: 10px
 
