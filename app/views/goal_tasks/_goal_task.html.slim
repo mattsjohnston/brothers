@@ -5,7 +5,12 @@ li class=(goal_task.complete?(user) ? 'task-complete' : '')
   - else
     .checkbox.checkbox-other
       .check
-  p.points #{goal_task.points} points
+  .pull-right
+    p.points #{goal_task.points} points
+    - if can? :edit, goal_task
+      = link_to 'edit', edit_admin_goal_task_path(goal_task)
+
+
   h4.title= goal_task.name
   p.description
     - if goal_task.interval_unit != 'day'

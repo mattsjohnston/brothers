@@ -36,9 +36,11 @@ class GoalTask < ActiveRecord::Base
     where("not exists (select null from task_completions where task_completions.goal_task_id = goal_tasks.id and task_completions.user_id = ?)", user.id)
   }
   scope :within_week, lambda { |date|
-    joins(:goal).
-    where(goals: { interval_unit: :week }).
     where(due_date: date.beginning_of_week..date.end_of_week)
+  }
+  scope :weekly, lambda { 
+    joins(:goal).
+    where(goals: { interval_unit: :week })
   }
 
   def complete?(user)

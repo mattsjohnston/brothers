@@ -1,6 +1,10 @@
 ul.tasks
+  .task-progress
+    .task-progress-fill style="width: #{@group_date_service.point_percentage(current_user)}"
   = render group_date_service.incomplete_tasks(user), user: user
   = render group_date_service.complete_tasks(user), user: user
 ul.tasks.tasks-weekly
+  .task-progress.task-progress-week
+    .task-progress-fill style="width: #{@group_date_service.point_percentage_week(current_user)}"
   = render group_date_service.incomplete_weekly_tasks(user), user: user
   = render group_date_service.complete_weekly_tasks(user), user: user

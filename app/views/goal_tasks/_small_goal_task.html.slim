@@ -1,5 +1,6 @@
 li class=(goal_task.complete?(user) ? 'task-complete' : '')
-  p.points #{goal_task.points} points
+  .pull-right
+    p.points #{goal_task.points} points
   .checkbox
     .check
   h4.title= goal_task.name
