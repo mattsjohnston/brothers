@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.3.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -46,6 +46,7 @@ gem 'simple_form'
 gem 'rails_config'
 gem 'binding_of_caller'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'responsive_active_admin'
 gem 'devise', github: 'plataformatec/devise'
 gem 'bootstrap-sass', '3.3.5'
 gem 'bootstrap-sass-extras'
