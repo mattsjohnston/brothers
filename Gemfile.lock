@@ -213,6 +213,8 @@ GEM
     redcarpet (3.3.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    responsive_active_admin (0.0.5)
+      activeadmin
     rubyzip (1.1.7)
     sass (3.4.20)
     sass-rails (5.0.4)
@@ -292,6 +294,7 @@ DEPENDENCIES
   rails_12factor
   rails_config
   redcarpet
+  responsive_active_admin
   sass-rails
   sdoc (~> 0.4.0)
   simple_form
