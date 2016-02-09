@@ -12,7 +12,7 @@
     span.glyphicon.glyphicon-menu-left
   = link_to group_path(@group, display_date: @display_date + 1.day), class: 'date-navigation date-navigation-right' do
     span.glyphicon.glyphicon-menu-right
-  .task-date-display= @display_date.to_s :long_ordinal
+  .task-date-display= @display_date.strftime("%a %b #{time.day.ordinalize}")
 
 .panel.member-tasks
   header
