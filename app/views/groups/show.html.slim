@@ -25,6 +25,4 @@
     header
       = image_tag user.image, class: 'member-image'
       h5= user.name
-    .task-progress
-      .task-progress-fill style="width: #{@group_date_service.point_percentage(user)}"
     = render 'shared/small_user_tasks', user: user, group_date_service: @group_date_service

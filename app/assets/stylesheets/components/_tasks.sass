@@ -98,6 +98,10 @@ $success-text: darken($success-color, 5%)
     border-top: 1px solid #eee
     padding-top: 1px
 
+    .task-progress .task-progress-fill
+      background-color: $brand-primary
+      height: 5px
+
 .task-date-selector
   +clearfix()
   .date-navigation
@@ -150,9 +154,3 @@ $success-text: darken($success-color, 5%)
   .task-progress-fill
     background: $success-color
     height: 10px
-
-  &.task-progress-week
-    .task-progress-fill
-      background-color: $brand-primary
-      height: 5px
-
