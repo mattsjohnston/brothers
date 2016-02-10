@@ -1,7 +1,6 @@
 - model_class = Group
 
 .panel.padding.group
-  .panel-meta.pull-right Day #{@group_date_service.days_since_beginning}
   h1.group-name= link_to @group.name, group_path(@group)
   .group-description= markdown @group.description
   a.panel-expand href="#"
@@ -13,6 +12,7 @@
   = link_to group_path(@group, display_date: @display_date + 1.day), class: 'date-navigation date-navigation-right' do
     span.glyphicon.glyphicon-menu-right
   .task-date-display= @display_date.strftime("%a %b #{@display_date.day.ordinalize}")
+  .panel-meta Day #{@group_date_service.days_since_beginning}
 
 .panel.member-tasks
   header
